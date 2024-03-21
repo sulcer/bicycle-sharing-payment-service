@@ -20,7 +20,7 @@ public class PaymentRepository {
     @Inject
     MongoClient mongoClient;
 
-    MongoCollection<Document> getCollection() {
+    public MongoCollection<Document> getCollection() {
         return mongoClient.getDatabase("payments").getCollection("payments");
     }
 
