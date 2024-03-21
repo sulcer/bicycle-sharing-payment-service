@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  mongodb:
+    container_name: mongodb-container
+    image: mongo
+    restart: on-failure
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - mongodb_network
+
+networks:
+  mongodb_network:
+
+volumes:
+  mongodb_data:
+    driver: local
