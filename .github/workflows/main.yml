@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
-        image: mongo
+      mongo:
+        image: mongo:4.0.4
         ports:
           - 27017:27017
         options: >-
