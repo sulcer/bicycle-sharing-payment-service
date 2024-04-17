@@ -36,3 +36,15 @@ jobs:
 
       - name: Build and test with Maven
         run: mvn -B package --file pom.xml
+
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS }}
+
+      - name: Build Docker image
+        run: docker build -t sulcer/bicycle-sharing-payment-service  -f src/main/docker/Dockerfile.jvm .
+
+      - name: Push Docker image
+        run: docker push sulcer/bicycle-sharing-payment-service
