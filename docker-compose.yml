@@ -16,7 +16,7 @@ services:
       dockerfile: src/main/docker/Dockerfile.jvm
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
       - QUARKUS_MONGODB_CONNECTION_STRING=mongodb://localhost:27017
     depends_on:
